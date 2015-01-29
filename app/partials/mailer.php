@@ -102,7 +102,7 @@
 	        	<div class="container">
                 	<div class="header-logo clearfix">
                         <div class="logo col-lg-2 col-md-2 col-sm-2 col-xs-3 no-gutters">
-                            <a href='index.html'><img 
+                            <a href='main.html'><img
 							id="logo" src="images/logo.png"  class="img-responsive" alt="cat insurance" >
 							</a>
                         </div>
@@ -123,7 +123,7 @@
                             </div>
                             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 								<ul class="nav navbar-nav">
-                                <li><a href="index.html" class="home"><span class="navlabel">דף הבית</span></a></li>
+                                <li><a href="main.html" class="home"><span class="navlabel">דף הבית</span></a></li>
                                 <li class="dropdown">
                                 	<a href="about-us.html" 
 onclick='menuGo("about-us.html")'
