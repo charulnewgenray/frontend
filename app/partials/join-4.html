@@ -1,0 +1,258 @@
+<section>
+    <!-- Register -->
+    <div class="container">
+        <div class="register">
+            <div class="join-heading"><h1 class="text-center">הצטרפות</h1></div>
+            <div class="join-wapper">
+                <div class="join-steps clearfix">
+                    <div class="join-step-icon">
+                        <img src="app/images/step4.png" class="img-responsive">
+                        <div class="join-step-icon-text clearfix">
+                            <span class="col-xs-3">מידע על בעל החיים</span>
+                            <span class="col-xs-3">מסלולים ומחירים</span>
+                            <span class="col-xs-3">פרטי תשלום</span>
+                            <span class="col-xs-3">שאלון</span>
+                        </div>
+                    </div>
+                </div>	<!-- join-steps -->
+                <div class="join-steps-content">
+                    <p class="text-center text30">
+                        אנו מעונינים לשאול אותך עוד מספר שאלות על
+
+                        <span style="font-weight:bold;">{{details.pet.name}}</span>
+
+                    </p>
+                    <div class="notification clearfix">
+                        <div class="col-xs-1 text-center"><i class="fa fa-paw"></i></div>
+                        <div class="col-xs-10 notification-content">לתשומת ליבך – התשובות לשאלות הבאות לא ישפיעו בשום אופן על מחיר השירות</div>
+                        <div class="col-xs-1 text-center"><i class="fa fa-paw"></i></div>
+                    </div>
+                    <form novalidate name="join3">
+                        <div class="custom-alert">
+                            <p>
+                                {{details.core.declaration.label}}
+                            </p>
+                            <div class="input">
+                                <input type="checkbox" ng-click="click = 0" ng-model="details.pet.medical.agreed" name="agreed" required>
+                                <label>מאשר</label>
+                            </div>
+                            <p class="alert-message">
+
+                        </div>
+
+                        <div ng-messages="join3.agreed.$error" ng-if="click > 0">
+                            <div class="error message" ng-message="required">
+                                עליך לאשר בכדי להמשיך
+
+                            </div>
+                        </div>
+                        <div class="registration-form">
+
+                            <div ng-if="details.pet.medical.agreed">
+                                <div class="form-group">
+                                    <div class="input-group">
+                                        <span class="input-group-addon"><i class="fa fa-user-md fa-fw"></i></span>
+                                        <input name="clinicVisited" type="text" class="form-control" placeholder="שמות המרפאות/רופאים שאצלם ביקרתי בשנתיים האחרונות" ng-model="details.pet.medical.clinicNames">
+
+                                    </div>
+                                </div>
+                                <div class="form-group">
+
+                                    <div class="input-group">
+
+                                        <span class="input-group-addon"><i class="fa fa-barcode fa-fw"></i></span>
+
+                                        <input name="chipNumber" type="text" class="form-control" placeholder=" מספר שבב" ng-model="details.pet.chipNum">
+
+                                    </div>
+
+                                </div>
+                                <!--<div ng-messages="join3.chipNumber.$error" ng-if="click > 0">-->
+                                <!--<div ng-message="required">-->
+                                <!--שדה חובה-->
+                                <!--</div>-->
+                                <!--</div>-->
+                                <br/>
+                                <p class="text-blue text-bold">מין הבעל חיים</p>
+
+                                <div class="input-group">
+                                    <span class="input-group-addon"><i class="fa fa-male fa-fw"></i></span>
+          <span class="input-group-addon">
+            <input type="radio" name="petGender" value="male" ng-model="details.pet.gender" ng-required="!details.pet.gender">
+          </span>
+                                    <span class="input-group-addon"><i class="fa fa-female fa-fw"></i></span>
+          <span class="input-group-addon">
+            <input type="radio" name="petGender" value="female" ng-model="details.pet.gender" ng-required="!details.pet.gender">
+          </span>
+                                </div><!-- /input-group -->
+
+                                <div ng-messages="join3.petGender.$error" ng-if="click > 0">
+                                    <div class="error message" ng-message="required">
+                                        שדה חובה
+                                    </div>
+                                </div>
+                                <p style="text-align: right; font-weight: bold;">האם חיית המחמד מעוקרת / מסורס?</p>
+                                <div class="input-group">
+
+                                    <span class="input-group-addon">כן</i></span>
+          <span class="input-group-addon">
+            <input type="radio" name="castrated" value="yes" ng-model="details.pet.castrated" ng-required="!details.pet.castrated">
+          </span>
+                                    <span class="input-group-addon">לא</i></span>
+          <span class="input-group-addon">
+            <input type="radio" name="castrated" value="no" ng-model="details.pet.castrated" ng-required="!details.pet.castrated">
+          </span>
+                                </div><!-- /input-group -->
+
+                                <div ng-messages="join3.castrated.$error" ng-if="click > 0">
+                                    <div class="error message" ng-message="required">
+                                        שדה חובה
+                                    </div>
+                                </div>
+
+                                <h3 style="text-align: right;">
+                                    אם לחיית המחמד שלך יש או היה בעבר אחת מהמחלות הבאות:
+                                </h3>
+
+                                <!--<table style="text-align: center;"class="table table-condensed table-bordered table-responsive">-->
+                                <!--<tbody>-->
+                                <!--<tr style="font-weight: bold;"><td>כן</td><td>לא</td><td>שאלה</td></tr>-->
+
+
+                                <div>
+                                    <div  class="col-xs-1 border pad_cell highlight">
+                                        כן
+                                    </div>
+                                    <div class="col-xs-1 border pad_cell highlight">
+                                        לא
+                                    </div>
+                                    <div class="col-xs-10 border pad_cell highlight">
+                                        שאלה
+                                    </div>
+                                </div>
+                                <div ng-repeat="question in details.core.questions.health" class="q_table">
+                                    <div>
+                                        <ng-form name="questionForm">
+                                            <div  class="col-xs-1 border pad_cell">
+                                                <input type="radio" value="yes" name="soc{{$index}}" ng-model="question.defaultAnswer" required/>
+                                            </div>
+                                            <div class="col-xs-1 border pad_cell">
+                                                <input type="radio" value="no" name="soc{{$index}}" ng-model="question.defaultAnswer" required/>
+                                            </div>
+                                            <div class="col-xs-10 border pad_cell">
+                                                {{ question.question }}
+                                            </div>
+                                            <div class="col-xs-12" ng-if="click > 0" ng-show="questionForm.soc{{$index}}.$invalid">
+                                                <div class="error message">
+                                                    שדה חובה
+                                                </div>
+                                            </div>
+                                        </ng-form>
+                                    </div>
+                                </div>
+                                <!--</tbody>-->
+                                <!--</table>-->
+
+                                <!--<div ng-if="details.pet.type == 'cat'">-->
+
+                                <!--<table style="text-align: center;"class="table table-condensed table-bordered table-responsive">-->
+                                <!--<tbody>-->
+                                <!--<tr style="font-weight: bold;"><td>כן</td><td>לא</td><td>שאלה</td></tr>-->
+
+
+                                <!--<tr ng-repeat="question in core.questions.catHealth">-->
+                                <!--<td><input type="radio" value="yes" ng-model="question.defaultAnswer"/></td>-->
+                                <!--<td><input type="radio" value="no" ng-model="question.defaultAnswer"/></td>-->
+                                <!--<td>{{ question.question }}</td>-->
+                                <!--</tr>-->
+                                <!--</tbody>-->
+                                <!--</table>-->
+
+
+                                <!--</div>-->
+                                <div ng-if="details.pet.type == 'cat'">
+
+                                    <div>
+                                        <div  class="col-xs-1 border pad_cell highlight">
+                                            כן
+                                        </div>
+                                        <div class="col-xs-1 border pad_cell highlight">
+                                            לא
+                                        </div>
+                                        <div class="col-xs-10 border pad_cell highlight">
+                                            שאלה
+                                        </div>
+                                    </div>
+                                    <div ng-repeat="question in details.core.questions.catHealth" class="q_table">
+                                        <div>
+                                            <ng-form name="questionForm">
+                                                <div  class="col-xs-1 border pad_cell">
+                                                    <input type="radio" value="yes" name="soc_c{{$index}}" ng-model="question.defaultAnswer" required/>
+                                                </div>
+                                                <div class="col-xs-1 border pad_cell">
+                                                    <input type="radio" value="no" name="soc_c{{$index}}" ng-model="question.defaultAnswer" required/>
+                                                </div>
+                                                <div class="col-xs-10 border pad_cell">
+                                                    {{ question.question }}
+                                                </div>
+                                                <div class="col-xs-12" ng-if="click > 0" ng-show="questionForm.soc_c{{$index}}.$invalid">
+                                                    <div class="error message">
+                                                        שדה חובה
+                                                    </div>
+                                                </div>
+                                            </ng-form>
+                                        </div>
+                                    </div>
+                                </div>
+                                <p style="text-align: right; font-weight: bold;">האם בשנה האחרונה ביקרת עם חיית המחמד שלך אצל וטרינר למעט לצורך ביצוע חיסונים , תילוע וניתוח עיקור/סירוס?</p>
+                                <div class="input-group">
+
+                                    <span class="input-group-addon">כן</i></span>
+          <span class="input-group-addon">
+            <input type="radio" name="visitedVet" value="yes" ng-model="details.pet.visitedVet" ng-required="!details.pet.visitedVet">
+          </span>
+
+                                    <span class="input-group-addon">לא</i></span>
+          <span class="input-group-addon">
+            <input type="radio" name="visitedVet" value="no" ng-model="details.pet.visitedVet" ng-required="!details.pet.visitedVet">
+          </span>
+
+                                </div><!-- /input-group -->
+                                <div ng-messages="join3.visitedVet.$error" ng-if="click > 0">
+                                    <div class="error message" ng-message="required">
+                                        שדה חובה
+                                    </div>
+                                </div>
+                                <div ng-if="details.pet.visitedVet == 'yes'">
+                                    <p style="text-align: right; font-weight: bold;">?מה הייתה מטרת הביקור</p>
+                                    <div ng-repeat="visit in details.core.questions.illnessQuestions" class="input-group">
+                                        <input dir="rtl" type="text" class="form-control" placeholder="{{visit.label}}" ng-model="details.pet.visited[visit.value]" ng-disabled="!details.pet.visit[visit.value]"/>
+                    <span class="input-group-addon">
+                    <input type="checkbox" ng-model="details.pet.visit[visit.value]"/>
+                   </span>
+                                    </div>
+                                </div>
+
+                                <p style=" margin-top:10px; font-weight: bold; text-align: right; text-decoration: underline;">סמן וי בשאלות הבאות רק במידה והתשובה היא כן</p>
+                                <div ng-repeat="question in details.core.questions.generalHealth" class="input-group">
+                                    <input dir="rtl" type="text" class="form-control" placeholder="{{question.label}}" ng-model="details.pet.general[question.value]" ng-disabled="!details.pet.generals[question.value]">
+                 <span class="input-group-addon">
+                <input type="checkbox" ng-model="details.pet.generals[question.value]">
+                </span>
+                                </div>
+                            </div>
+
+
+                        </div>
+
+
+                        <div class="step1-submit text-center">
+                            <button class="button-style2" ng-click="next('#/join/4',join3.$valid,$event)">המשך</button>
+                        </div>
+                    </form>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

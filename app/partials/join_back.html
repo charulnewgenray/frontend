@@ -1,0 +1,155 @@
+<section>
+    <!-- Register -->
+    <div class="container">
+        <div class="register">
+            <div class="join-heading"><h1 class="text-center">הצטרפות</h1></div>
+            <div class="join-wapper">
+                <div class="join-steps clearfix">
+                    <div class="join-step-icon">
+                        <img src="app/images/step1.png" class="img-responsive">
+                        <div class="join-step-icon-text clearfix">
+                            <span class="col-xs-3">מידע על בעל החיים</span>
+                            <span class="col-xs-3">מסלולים ומחירים</span>
+                            <span class="col-xs-3">פרטי תשלום</span>
+                            <span class="col-xs-3">שאלון</span>
+                        </div>
+                    </div>
+                </div>	<!-- join-steps -->
+                <div class="join-steps-content">
+                    <h1 class="text-center">אנא מלא את הפרטים הבאים בכדי להתחיל את תהליך הרישום</h1>
+                    <div class="registration-form">
+                        <form role="form" name="join1" angular-validator novalidate>
+                            <div class="form-group">
+                                <div class="input-group" >
+                                    <div class="input-group-addon"><i class="fa fa-paw"></i></div>
+                                    <input class="form-control" ng-model="details.pet.name" type="text" name="petName" placeholder="שם הבעל חיים"required ng-minlength="2"/>
+                                </div>
+                            </div>
+
+                            <div class="form-group clearfix">
+                                <div class="col-xs-6">
+                                    <img src="app/images/register-img-cat.png" class="img-responsive">
+                                </div>
+                                <div class="col-xs-6">
+                                    <img src="app/images/register-img-dog.png" class="img-responsive">
+                                </div>
+
+                            </div>
+                            <div class="form-group inline-group text-center clearfix field-grey">
+                                <div class="col-xs-3 no-gutters form-control">
+                                    <label>חתול</label>
+                                </div>
+                                <div class="col-xs-3 no-gutters form-control">
+                                    <input type="radio" ng-model="details.pet.type" name="petType"  value="cat" ng-required="!details.pet.type">
+                                </div>
+                                <div class="col-xs-3 no-gutters form-control">
+                                    <label>כלב</label>
+                                </div>
+                                <div class="col-xs-3 no-gutters form-control">
+                                    <input type="radio" ng-model="details.pet.type" name="petType"  value="dog" ng-required="!details.pet.type">
+                                </div>
+
+                            </div>
+                            <div class="form-group">
+                                <div class="selectContainer">
+                                    <div ng-if="details.pet.type!='cat'">
+                                        <select ng-required="true" class="form-control" ng-model="details.pet.breed"
+                                                ng-options="breed.label for breed in details.core.breeds.dogs">
+                                            <option value="">---- בחר גזע --</option>
+                                        </select>
+
+                                    </div>
+                                    <div ng-if="details.pet.type=='cat'">
+                                        <select ng-required="true" class="form-control" ng-model="details.pet.breed"
+                                                ng-options="breed.label for breed in details.core.breeds.cats">
+                                            <option value="">-- בחר גזע --</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="animals clearfix" ng-show="details.pet.type" ng-if="details.pet.type=='dog' && details.pet.breed.value=='mixed'">
+                                <div class="col-xs-3 no-gutters">
+                                    <img src="app/images/dog4.jpg" class="img-responsive">
+                                </div>
+                                <div class="col-xs-3 no-gutters">
+                                    <img src="app/images/dog3.jpg" class="img-responsive">
+                                </div>
+                                <div class="col-xs-3 no-gutters">
+                                    <img src="app/images/dog2.jpg" class="img-responsive">
+                                </div>
+                                <div class="col-xs-3 no-gutters">
+                                    <img src="app/images/dog1.jpg" class="img-responsive">
+                                </div>
+
+                            </div>
+                            <div class="form-group inline-group text-center clearfix field-grey" ng-if="details.pet.type=='dog' && details.pet.breed.value=='mixed'">
+                                <div class="col-xs-3 no-gutters form-control">
+                                    <input type="radio" ng-model="details.pet.size" name="petSize"  value="4" ng-required="!details.pet.size">
+                                    <label>ענק</label>
+                                </div>
+                                <div class="col-xs-3 no-gutters form-control">
+                                    <input type="radio" ng-model="details.pet.size" name="petSize"  value="3"  ng-required="!details.pet.size">
+                                    <label>גדול</label>
+                                </div>
+                                <div class="col-xs-3 no-gutters form-control">
+                                    <input type="radio" ng-model="details.pet.size" name="petSize"  value="2"  ng-required="!details.pet.size">
+                                    <label>בינוני</label>
+                                </div>
+                                <div class="col-xs-3 no-gutters form-control">
+                                    <input type="radio" ng-model="details.pet.size" name="petSize" value="1"  ng-required="!details.pet.size">
+                                    <label>קטן</label>
+                                </div>
+                            </div>
+                            <div class="form-group clearfix">
+                                <div class="col-lg-6 col-md-6 col-xs-6 no-gutters">
+                                    <div class="input-group">
+                                        <div class="input-group-addon"><i class="fa fa-tachometer"></i></div>
+                                        <input ng-model="details.pet.age.year" class="form-control no-left-radius" type="number" placeholder="שנים" name="petAgeYear" min="0" max="7" required>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 col-md-6 col-xs-6 no-gutters">
+                                    <div class="input-group">
+                                        <div class="input-group-addon no-right-radius"><i class="fa fa-tachometer"></i></div>
+                                        <input ng-model="details.pet.age.month" class="form-control" type="number" placeholder="חודשים" name="petAgeMonth" min="0" max="11" required>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                            <div class="form-group">
+                                <div class="input-group" >
+                                    <div class="input-group-addon"><i class="fa fa-male"></i></div>
+                                    <input class="form-control" name="clientName" ng-model="details.client.name" type="text" placeholder="שם" required ng-minlength="2">
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <div class="input-group" >
+                                    <div class="input-group-addon"><i class="fa fa-users"></i></div>
+                                    <input class="form-control" ng-model="details.client.lastName" name="clientLastName" type="text" placeholder="שם משפחה" required ng-minlength="2">
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <div class="input-group" >
+                                    <div class="input-group-addon"><i class="fa fa-at"></i></div>
+                                    <input class="form-control" name="clientEmail" ng-model="details.client.email" type="email" placeholder="דואר אלקטרוני" required>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="input-group" >
+                                    <div class="input-group-addon"><i class="fa fa-phone"></i></div>
+                                    <input class="form-control" ng-model="details.client.phone" type="text" placeholder="טלפון">
+                                </div>
+                            </div>
+                            <div class="step1-submit text-center">
+                                <button class="button-style2" ng-click="next('#/join/2',join1.$valid,$event)">המשך</button>
+                            </div>
+
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

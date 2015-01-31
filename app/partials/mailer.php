@@ -113,7 +113,7 @@
                 	<nav class="navbar navbar-default navbar-menu" role="navigation">
                     	<div class="container-fluid no-gutters">
                         	<div class="navbar-header no-gutters">
-                                <a href="Request-Quote.html" class="get-quote"><span>קבל הצעת מחיר</span></a>                            
+                                <a href="Request-Quote.php" class="get-quote"><span>קבל הצעת מחיר</span></a>
                             	<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
                                     <span class="sr-only">Toggle navigation</span>
                                     <span class="icon-bar"></span>

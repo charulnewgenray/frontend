@@ -32,9 +32,9 @@
                 	 <div class="col-lg-7 col-md-7 col-sm-7 col-xs-7">
                      <ul class="top-links list-inline">
 	                        <li class="link-customerLogin"><a 
-		href='Login.html'>כניסת לקוחות</a></li>
+		href='#/login'>כניסת לקוחות</a></li>
                             <li class="link-veterinarian"><a 
-		href='Login-Veterinarians.html'>כניסת וטרינר</a></li>                        	
+		href='#/login-veterinarians'>כניסת וטרינר</a></li>
                             <li class="link-contactus"><a href="#/contact-us">צור קשר</a></li>
                         </ul>
                      </div>					 
@@ -42,7 +42,7 @@
             </div>    
         </div>
         
-        	<div class="header-middle">
+        	<div class="header-middle" ng-controller="mainCtrl">
 	        	<div class="container">
                 	<div class="header-logo clearfix">
                         <div class="logo col-lg-2 col-md-2 col-sm-2 col-xs-3 no-gutters">
@@ -57,7 +57,7 @@
                 	<nav class="navbar navbar-default navbar-menu" role="navigation">
                     	<div class="container-fluid no-gutters">
                         	<div class="navbar-header no-gutters">
-                                <a href="Request-Quote.html" class="get-quote"><span>קבל הצעת מחיר</span></a>                            
+                                <a href="#/join/1" class="get-quote"><span>קבל הצעת מחיר</span></a>
                             	<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
                                     <span class="sr-only">Toggle navigation</span>
                                     <span class="icon-bar"></span>
@@ -67,9 +67,9 @@
                             </div>
 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 								<ul class="nav navbar-nav">
-                                <li><a href="#/"class="home selected"><span class="navlabel">דף הבית</span></a></li>
+                                <li><a href="#/"class="home " ng-class="{selected: $route.current.activetab == 'home'}"><span class="navlabel">דף הבית</span></a></li>
                                 <li class="dropdown">
-                                	<a href="#/about"
+                                	<a ng-class="{selected: $route.current.activetab == 'about'}" href="#/about"
 onclick='menuGo("#/about")'
 class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
                                     	<span class="navlabel"
@@ -77,26 +77,26 @@ class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="fals
 										 class="caret"></span></span>
                                     </a>
                                     <ul class="dropdown-menu" role="menu">
-                                        <li><a href='about-us.html' class="service">על השירות</a></li>
-                                        <li><a href="What-we-cover.html" class="solution">מה אנו מכסים</a></li>
-                                        <li><a href="faq.html" class="solution">שאלות נפוצות</a></li>
+                                        <li><a href='#/about' class="service">על השירות</a></li>
+                                        <li><a href="#/what-we-cover" class="solution">מה אנו מכסים</a></li>
+                                        <li><a href="#/faq" class="solution">שאלות נפוצות</a></li>
                                     </ul>
                                 </li>
 		
                                 <li class="dropdown">
-                                	<a href="#/plans" class="dropdown-toggle"
+                                	<a ng-class="{selected: $route.current.activetab == 'plans'}" href="#/plans" class="dropdown-toggle"
 onclick='menuGo("#/plans")'
 data-toggle="dropdown" role="button" aria-expanded="false">
                                     	<span class="navlabel">&nbsp;תכניות כיסוי&nbsp;<span class="caret"></span></span>
                                     </a>
                                     <ul class="dropdown-menu" role="menu">
-                                        <li><a href='plans.html' class="solution">תוכניות כיסוי</a></li>
-                                        <li><a href='Service-for-the-dog.html' class="solution">השירות לכלב</a></li>
-                                        <li><a href="Service-for-the-cat.html" class="solution">השירות לחתול</a></li>
+                                        <li><a href='#/plans' class="solution">תוכניות כיסוי</a></li>
+                                        <li><a href='#/service-for-the-dog' class="solution">השירות לכלב</a></li>
+                                        <li><a href="#/service-for-the-cat" class="solution">השירות לחתול</a></li>
                                     </ul>
                                 </li>
 
-                                <li><a href="#/for-Veterinarians" class="for-veterinarians last"><span class="navlabel">לוטרינרים</span></a></li>
+                                <li><a ng-class="{selected: $route.current.activetab == 'for-Veterinarians'}" href="#/for-Veterinarians" class="for-veterinarians last"><span class="navlabel">לוטרינרים</span></a></li>
                             </ul>
                             </div>                            
                        </div> 
@@ -176,6 +176,7 @@ data-toggle="dropdown" role="button" aria-expanded="false">
 <!-- END CORE JQUERY PLUGINS -->
 
 <script src="app/js/angular.min.js"></script>
+<script src="app/js/angular-messages.js"></script>
 <script src="app/js/angular-route.min.js"></script>
 <script src="app/js/angular-animate.min.js" ></script>
 <script src="app/js/toaster.js"></script>

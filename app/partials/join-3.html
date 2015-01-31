@@ -1,0 +1,250 @@
+<section>
+    <!-- Register -->
+    <div class="container">
+        <div class="register">
+            <div class="join-heading"><h1 class="text-center">הצטרפות</h1></div>
+            <div class="join-wapper">
+                <div class="join-steps clearfix">
+                    <div class="join-step-icon">
+                        <img src="app/images/step3.png" class="img-responsive">
+                        <div class="join-step-icon-text clearfix">
+                            <span class="col-xs-3">מידע על בעל החיים</span>
+                            <span class="col-xs-3">מסלולים ומחירים</span>
+                            <span class="col-xs-3">פרטי תשלום</span>
+                            <span class="col-xs-3">שאלון</span>
+                        </div>
+                    </div>
+                </div>	<!-- join-steps -->
+                <div class="join-steps-content">
+                    <h1 class="text-center">אנא בחר מסלול הצתרפות</h1>
+                    <div class="registration-form">
+                        <form role="form" novalidate name="join2">
+                            <div class="control-group" ng-class="{true: 'error'}[submitted">
+                            <div class="form-group">
+                                <div class="input-group">
+                                    <div class="input-group-addon"><i class="fa fa-male"></i></div>
+                                    <input class="form-control" ng-model="details.client.name" type="text" name="clientName" ng-minlength="2" placeholder=" שם פרטי" required>
+                                </div>
+                            </div>
+                                <div class="error message" ng-show="submitted && join2.clientName.$error.required">
+                                    שדה חובה
+                                </div>
+                                <div class="error message" ng-show="submitted && join2.clientName.$error.minlength">
+                                    שם קצר מידי
+                                </div>
+                            <div class="form-group">
+                                <div class="input-group">
+                                    <div class="input-group-addon"><i class="fa fa-users"></i></div>
+                                    <input class="form-control" type="text" ng-model="details.client.lastName" name="clientLastName" placeholder="שם משפחה" required ng-minlength="2">
+                                </div>
+                            </div>
+                                <div class="error message" ng-show="submitted && join2.clientLastName.$error.required">
+                                    שדה חובה
+                                </div>
+                                <div class="error message" ng-show="submitted && join2.clientLastName.$error.minlength">
+                                    שם קצר מידי
+                                </div>
+
+
+                            <div class="form-group">
+                                <angucomplete-alt selected-object="details.client.addr.city" placeholder="עיר" pause="500" remote-url="{{api.city}}" remote-url-data-field="cities" search-fields="city" title-field="city" minlength="2" input-class="form-control form-control-small" match-class="highlight" class="ng-isolate-scope"></angucomplete-alt>
+                            </div>
+                            <div ng-if="details.client.addr.city === undefined && submitted">
+                                <div class="error message">
+                                    שדה חובה
+
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <div class="input-group">
+                                    <div class="input-group-addon"><i class="fa fa-home"></i></div>
+                                    <input class="form-control" type="text" ng-model="details.client.addr.appt" name="clientAddress" placeholder="כתובת, דוגמא : אבן גבירול 53, קומה 2 דירה 3" required minlength="3">
+                                </div>
+                            </div>
+
+
+                                <div class="error message" ng-show="submitted && join2.clientAddress.$error.required">
+                                    שדה חובה
+                                </div>
+                                <div class="error message" ng-show="submitted && join2.clientAddress.$error.minlength">
+                                    שם קצר מידי
+                                </div>
+
+
+                            <div class="form-group">
+                                <div class="input-group">
+                                    <div class="input-group-addon"><i class="fa fa-envelope-o"></i></div>
+                                    <input class="form-control" type="number" ng-model="details.client.addr.zip" name="clientZip" placeholder="מיקוד" min="0" >
+                                </div>
+                            </div>
+
+
+                                <div class="error message" ng-show="submitted && join2.clientZip.$error.number">
+                                    מספר לא תקין
+                                </div>
+                                <div class="error message" ng-show="submitted && join2.clientZip.$error.minlength">
+                                    מספר לא תקין
+                                </div>
+
+                            <div class="form-group">
+                                <div class="input-group">
+                                    <div class="input-group-addon"><i class="fa fa-mobile-phone"></i></div>
+                                    <input class="form-control" ng-model="details.client.cellphone" type="text" name="clientCelular" placeholder="סלולרי , לדוגמא : 0523111488" required ng-minlength="9" ng-maxlength="11">
+                                </div>
+                            </div>
+
+                                <div class="error message" ng-show="submitted && join2.clientCelular.$error.required">
+                                    שדה חובה
+                                </div>
+                                <div class="error message" ng-show="submitted && join2.clientCelular.$error.minlength">
+                                    מספר לא תקין
+                                </div>
+                                <div class="error message" ng-show="submitted && join2.clientCelular.$error.maxlength">
+                                    מספר לא תקין
+                                </div>
+
+                            <div class="form-group">
+                                <div class="input-group">
+                                    <div class="input-group-addon"><i class="fa fa-at"></i></div>
+                                    <input class="form-control" type="email" name="clientEmail" ng-model="details.client.email" placeholder="דוא״ל , לדוגמא : info@marpet.co.il" required>
+                                </div>
+                            </div>
+
+                                <div class="error message" ng-show="submitted && join2.clientEmail.$error.email">
+                                    דוא״ל לא תקין
+                                </div>
+                                <div class="error message" ng-show="submitted && join2.clientEmail.$error.required">
+                                    שדה חובה
+                                </div>
+
+
+                            <div class="form-group">
+                                <div class="input-group">
+                                    <div class="input-group-addon"><i class="fa fa-key"></i></div>
+                                    <input class="form-control" type="password" name="password" ng-model="details.client.password" placeholder="סיסמא" required ng-minlength="4">
+                                </div>
+                            </div>
+
+                                <div class="error message" ng-show="submitted && join2.password.$error.minlength">
+
+                                    סיסמא קצרה מידי
+                                </div>
+                                <div class="error message" ng-show="submitted && join2.password.$error.required">
+                                    שדה חובה
+                                </div>
+
+
+
+                            <div class="form-group">
+                                <div class="input-group">
+                                    <div class="input-group-addon"><i class="fa fa-phone"></i></div>
+                                    <input class="form-control" type="text" ng-model="details.client.phone" name="clientPhone" placeholder="טלפון , לדוגמא : 03-8381392" required ng-minlength="7" ng-maxlength="12">
+                                </div>
+                            </div>
+
+                                <div class="error message" ng-show="submitted && join2.clientPhone.$error.required">
+                                    שדה חובה
+                                </div>
+                                <div class="error message" ng-show="submitted && join2.clientPhone.$error.minlength">
+                                    מספר לא תקין
+                                </div>
+                                <div class="error message" ng-show="submitted && join2.clientPhone.$error.maxlength">
+                                    מספר לא תקין
+                                </div>
+
+                            <div class="form-group">
+                                <div class="input-group">
+                                    <div class="input-group-addon"><i class="fa fa-barcode"></i></div>
+                                    <input class="form-control" type="text" ng-model="details.client.redirectCode" name="redirectCode" placeholder="קוד מפנה">
+                                </div>
+                            </div>
+
+                            <p class="text-blue text18">תשלום בכרטיס</p>
+                            <div class="form-group inline-group text-center clearfix field-grey">
+                                <div class="col-xs-2 no-gutters form-control">
+                                    <i class="fa fa-cc-mastercard"></i>
+                                </div>
+                                <div class="col-xs-2 no-gutters form-control">
+                                    <input type="radio" name="type" value="mastercard" ng-model="details.client.payment.creditType">
+                                </div>
+                                <div class="col-xs-2 no-gutters form-control">
+                                    <i class="fa fa-cc-amex"></i>
+                                </div>
+                                <div class="col-xs-2 no-gutters form-control">
+                                    <input type="radio" name="type" value="amex" ng-model="details.client.payment.creditType">
+                                </div>
+                                <div class="col-xs-2 no-gutters form-control">
+                                    <i class="fa fa-cc-visa"></i>
+                                </div>
+                                <div class="col-xs-2 no-gutters form-control">
+                                    <input type="radio" name="type" value="visa" ng-model="details.client.payment.creditType">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <credit-cards bindto="details.client.payment.creditcard" credittype="details.client.payment.creditType"></credit-cards>
+                            </div>
+
+                                <div class="error message" ng-show="submitted && join2.creditcard.$error.required">
+                                    שדה חובה
+                                </div>
+                                <div class="error message" ng-show="submitted && join2.creditcard.$error.pattern">
+                                    מספר לא תקין
+                                </div>
+                                <div class="error message" ng-show="submitted && join2.creditcard.$error.number">
+                                    ספרות בלבד
+                                </div>
+
+                            <div class="form-group">
+                                <div class="input-group">
+                                    <div class="input-group-addon"><i class="fa fa-credit-card"></i></div>
+                                    <input class="form-control" type="text" ng-model="details.client.payment.cvv" name="clientCvv" placeholder=" ספרות בגב הכרטיס , CVV"  required ng-minlength="3" ng-maxlength="4">
+                                </div>
+                            </div>
+
+                                <div class="error message" ng-show="submitted && join2.clientCvv.$error.required">
+                                    שדה חובה
+                                </div>
+                                <div class="error message" ng-show="submitted && join2.clientCvv.$error.minlength">
+                                    מספר לא תקין
+                                </div>
+                                <div class="error message" ng-show="submitted && join2.clientCvv.$error.maxlength">
+                                    מספר לא תקין
+                                </div>
+
+                            <div class="form-group">
+                                <div class="input-group">
+                                    <div class="input-group-addon"><i class="fa fa-calendar"></i></div>
+                                    <input class="form-control" ng-model="details.client.payment.exp" type="text" name="clientExp" placeholder="תוקף כרטיס , לדוגמא 14/18" required>
+                                </div>
+                            </div>
+
+                                <div class="error message" ng-show="submitted && join2.clientExp.$error.required">
+                                    שדה חובה
+                                </div>
+
+                            <div class="form-group">
+                                <div class="input-group">
+                                    <div class="input-group-addon"><i class="fa fa-file-o"></i></div>
+                                    <input class="form-control" type="text" ng-model="details.client.id" name="clientID" placeholder="מספר זהות , לדוגמא : 20838108" required>
+                                </div>
+                            </div>
+
+                                <div class="error message" ng-show="submitted && join2.clientID.$error.required">
+                                    שדה חובה
+                                </div>
+
+
+                            <div class="step3-submit text-center">
+                                <button class="button-style2" ng-click="submitted=true">המשך</button>
+
+
+                            </div>
+                    </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

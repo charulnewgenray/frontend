@@ -50,7 +50,18 @@ function verifyRequiredParams($required_fields,$request_params) {
         $rows = $db->select("customers","*",array());
         echoResponse(200, $rows);
     });
+/* get dog breeds */
 
+$app->get('/getDogBreeds', function() use ($app) {
+    global $db;
+    $rows = $db->select("dog_breeds","id,label,value",array());
+    echoResponse(200, $rows);
+});
+$app->get('/getCatBreeds', function() use ($app) {
+    global $db;
+    $rows = $db->select("cat_breeds","id,label,value",array());
+    echoResponse(200, $rows);
+});
 function echoResponse($status_code, $response) {
     $app = \Slim\Slim::getInstance();
     // Http response code
@@ -61,6 +72,7 @@ function echoResponse($status_code, $response) {
 
     echo json_encode($response);
 }
+
 
 $app->run();
 ?>
