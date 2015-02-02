@@ -202,10 +202,12 @@
                                 <div class="input-group" >
                                     <div class="input-group-addon"><i class="fa fa-phone"></i></div>
                                     <input class="form-control" name="clientPhone" ng-model="details.client.phone" type="text" placeholder="טלפון">
+
                                 </div>
                             </div>
+                                <input class="form-control"  name="clientStep" ng-model="details.client.step" type="text">
                             <div class="step1-submit text-center">
-                                <button type="submit" class="button-style2" ng-click="submitted=true">המשך</button>
+                                <button type="submit" class="button-style2" ng-click="saveJoin(details,1)">המשך</button>
 
                             </div>
                         </div>
