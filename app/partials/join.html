@@ -18,7 +18,7 @@
                 <div class="join-steps-content">
                     <h1 class="text-center">אנא מלא את הפרטים הבאים בכדי להתחיל את תהליך הרישום</h1>
                     <div class="registration-form" ng-controller="joinCtrl">
-                        <form role="form" name="join0" novalidate>
+                        <form data-ng-submit="submit()" role="form" name="join0" novalidate>
                             <div class="control-group" ng-class="{true: 'error'}[submitted]">
                             <div class="form-group">
                                 <div class="input-group" >
@@ -205,10 +205,9 @@
 
                                 </div>
                             </div>
-                                <input class="form-control"  name="clientStep" ng-model="details.client.step" type="text">
+                                <input class="form-control"  name="clientStep" ng-model="details.client.step" type="hidden">
                             <div class="step1-submit text-center">
                                 <button type="submit" class="button-style2" ng-click="saveJoin(details,1)">המשך</button>
-
                             </div>
                         </div>
                         </form>

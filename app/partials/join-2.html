@@ -18,7 +18,7 @@
                 </div>	<!-- join-steps -->
                 <div id="join-step2-content" class="join-steps-content">
                     <h1 class="text-center">אנא בחר מסלול הצתרפות</h1>
-                    <div class="registration-form">
+                    <div class="registration-form" ng-controller="joinCtrl">
 
                         <form role="form" novalidate name="join1">
                             <div class="control-group" ng-class="{true: 'error'}[submitted]">
@@ -71,7 +71,7 @@
 
                                     <div class="step2-table step2-table2">
                                         <ul class="list-inline table2">
-                                            <li class="first" ng-click="details.client.bundle = bundles[2].name">
+                                            <li class="first"  ng-click="details.client.bundle = 3">
                                                 <div class="table-heading">עלות אצל הוטרינר</div>
                                                 <div class="table-row"><img src="app/images/icon5.png" class="img-responsive"/></div>
                                                 <div class="table-row"><img src="app/images/icon5.png" class="img-responsive"/></div>
@@ -83,7 +83,7 @@
                                                 <div class="table-row totalprice">&#8362;{{bundles[2].price}}</div>
                                                 <div class="planhover"><img src="app/images/registerplanhover.png" class="img-responsive"></div>
                                             </li>
-                                            <li class="second"  ng-click="details.client.bundle = bundles[1].name">
+                                            <li class="second"  ng-click="details.client.bundle = 2">
                                                 <div class="table-heading">עלות אצל הוטרינר</div>
                                                 <div class="table-row"><img src="app/images/icon5.png" class="img-responsive"/></div>
                                                 <div class="table-row"><img src="app/images/icon5.png" class="img-responsive"/></div>
@@ -94,7 +94,7 @@
                                                 <div class="table-row"><img src="app/images/icon11.png" class="img-responsive"/></div>
                                                 <div class="table-row totalprice">&#8362;{{bundles[1].price}}</div>
                                                 <div class="planhover"><img src="app/images/registerplanhover.png" class="img-responsive"></div>                                                            </li>
-                                            <li class="last"  ng-click="details.client.bundle = bundles[0].name">
+                                            <li class="last"  ng-click="details.client.bundle = 1">
                                                 <div class="table-heading">עלות אצל הוטרינר</div>
                                                 <div class="table-row"><img src="app/images/icon5.png" class="img-responsive"/></div>
                                                 <div class="table-row"><img src="app/images/icon5.png" class="img-responsive"/></div>
@@ -116,11 +116,13 @@
                             </div>
                             <h1 ng-if="details.client.bundle">
                                 בחרת בחבילת
-                                {{details.client.bundle}}
+                                    {{details.client.bundle}}
                             </h1>
+
                             <div class="step2-required"><p class="text-center">* דמי השירות עבור <span>{{details.pet.name}}</span>, הינו בהתאם לגיל שהוזן. </p></div>
+                                <input class="form-control"  name="clientStep" ng-model="details.client.step" type="hidden">
                             <div class="step2-submit text-center">
-                                <button  class="button-style2" ng-click="submitted=true">המשך</button>
+                                <button  class="button-style2" ng-click="saveJoin(details,2)">המשך</button>
                             </div>
                         </div>
                         </form>

@@ -1,4 +1,5 @@
 <?php
+error_reporting(0);
 session_cache_limiter('public');
 session_start();
 require_once 'dbHandler.php';
@@ -67,30 +68,26 @@ $app->get('/getCatBreeds', function() use ($app) {
 $app->post('/saveJoin', function() use ($app) {
     $decode = json_decode($app->request->getBody());
     $step = $decode->step;
-
-
-    if(!isset($_SESSION['session_id']) || is_null($_SESSION['session_id'])){
-        $session = uniqid('__ss');
-        $_SESSION['session_id'] = $session;
-    }
-
     global $db;
     $mandatory = array('session_id');
     if($_SESSION['session_id']){
         $rows = $db->select("sessions","*" ,array('session_id'=>$_SESSION['session_id']));
         $updateData = unserialize($rows['data'][0]['data']);
         $updateData[$step] = $app->request->getBody();
-
         $dataObj = new stdClass();
         $dataObj->data = serialize($updateData);
         $dataObj->session_id = $_SESSION['session_id'];
-
         $condition = array('session_id'=>$_SESSION['session_id']);
         $mandatory = array();
         $rows = $db->update("sessions", $dataObj , $condition, $mandatory);
-
+        if($rows["status"]=="success")
+            $rows["message"] = "Join Form has been updated successfully.";
 
     }else{
+        if(!isset($_SESSION['session_id']) || is_null($_SESSION['session_id'])){
+            $session = uniqid('__ss');
+            $_SESSION['session_id'] = $session;
+        }
         $data[$step] = $app->request->getBody();
         $dataObj = new stdClass();
         $dataObj->data = serialize($data);
@@ -101,9 +98,8 @@ $app->post('/saveJoin', function() use ($app) {
         if($rows["status"]=="success")
             $rows["message"] = "Join Form has been submitted successfully.";
     }
-
-
     echoResponse(200, $rows);
+
 
 
 });

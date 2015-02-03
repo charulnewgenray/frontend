@@ -1,4 +1,4 @@
-app.controller('mainCtrl',function($scope,$route){
+app.controller('mainCtrl',function($scope,$route,$location){
     $scope.$route = $route;
 });
 app.controller('joinCtrl', function($scope, $route,Data) {
@@ -12,10 +12,12 @@ app.controller('joinCtrl', function($scope, $route,Data) {
     $scope.saveJoin = function (details,id) {
         details.step = id;
         Data.post('saveJoin',details).then(function(result){
-            if(result.status != 'error'){
+            if(result.message == 'No row updated' && result.status == 'warning'){
+               console.log(document.location);
                 var x = angular.copy(details);
                 x.save = 'insert';
                 x.id = result.data;
+            }else if(result.status == 'success'){
 
             }else{
                 console.log(result);
@@ -23,5 +25,10 @@ app.controller('joinCtrl', function($scope, $route,Data) {
 
         });
     }
+    $scope.submit = function (details) {
+        console.log(details);
+        $scope.submitted = true;
+    }
+
 
 });
